@@ -1,9 +1,8 @@
-
 import buildingspy.development.merger as m
 import os
-import io,json
+import json
 
-fileName = "Resources/Scripts/mergePaths.txt"
+fileName = "mergePaths.txt"
 if os.path.isfile(fileName):
     with open(fileName, 'r') as dataFile:
         data = json.loads(dataFile.read())
@@ -19,5 +18,5 @@ else:
         json.dump(data, dataFile)
 
 mer = m.IBPSA(annex60_dir, dest_dir) 
-mer.set_excluded_packages(["Experimental", "Obsolete"])
+mer.set_excluded_directories(["Experimental", "Obsolete"])
 mer.merge(overwrite_reference_results=True)
